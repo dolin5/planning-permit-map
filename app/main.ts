@@ -42,18 +42,11 @@ const map = new EsriMap({
 const view = new SceneView({
   map,
   container: "viewDiv",
-  center: [-111.16, 45.752],
+  center: [-111.10, 45.7],
   zoom: 11,
   highlightOptions: {
     color: "orange"
-  },
-  popup: {
-    dockEnabled: true,
-    dockOptions: {
-      buttonEnabled: false,
-      breakpoint: false
-    }
-  }
+  }  
 });
 
 view.whenLayerView(parcelsLayer).then(layerView=>parcelLayerView = layerView);
@@ -85,7 +78,7 @@ function getParcel(response:esri.SceneViewHitTestResult){
     highlight = parcelLayerView.highlight(graphic);
     if (graphic?.attributes["GEOCODE"] in locationMappings){
       let content = getPermitsPopup(graphic);    
-      view.popup.open({content,location:(graphic.geometry as esri.Polygon)});
+      view.popup.open({content});
     } else {
       view.popup.open({content:"No permits"});
     }

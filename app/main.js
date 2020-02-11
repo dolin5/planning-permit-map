@@ -41,17 +41,10 @@ define(["require", "exports", "esri/Map", "esri/Basemap", "esri/layers/VectorTil
     var view = new SceneView_1.default({
         map: map,
         container: "viewDiv",
-        center: [-111.16, 45.752],
+        center: [-111.10, 45.7],
         zoom: 11,
         highlightOptions: {
             color: "orange"
-        },
-        popup: {
-            dockEnabled: true,
-            dockOptions: {
-                buttonEnabled: false,
-                breakpoint: false
-            }
         }
     });
     view.whenLayerView(parcelsLayer).then(function (layerView) { return parcelLayerView = layerView; });
@@ -81,7 +74,7 @@ define(["require", "exports", "esri/Map", "esri/Basemap", "esri/layers/VectorTil
             highlight = parcelLayerView.highlight(graphic);
             if (((_a = graphic) === null || _a === void 0 ? void 0 : _a.attributes["GEOCODE"]) in permits_1.locationMappings) {
                 var content = permits_1.getPermitsPopup(graphic);
-                view.popup.open({ content: content, location: graphic.geometry });
+                view.popup.open({ content: content });
             }
             else {
                 view.popup.open({ content: "No permits" });
