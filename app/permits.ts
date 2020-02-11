@@ -87,7 +87,7 @@ export function getPermitsPopup(graphic:esri.Graphic){
     if (locationID in permits){
       permits[locationID].forEach((permit:permit) => {  
         let row = body.insertRow();      
-        permit["Permit Description"] = permit["Permit Description"].split("<br>").join("");
+        permit["Permit Description"] = permit["Permit Description"].split("<br>").join("").replace("Created by Import of Legacy Data on May 29, 2019 ","").replace(" (App Number)","");
         ["Permit Description","Permit Title","Project Address","Status","Status Date","Template name","Permit Number"].forEach((attribute:string)=>{
           let cell = row.insertCell();
           cell.innerHTML += permit[attribute];

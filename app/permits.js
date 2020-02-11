@@ -93,7 +93,7 @@ define(["require", "exports", "esri/core/promiseUtils"], function (require, expo
             if (locationID in permits) {
                 permits[locationID].forEach(function (permit) {
                     var row = body.insertRow();
-                    permit["Permit Description"] = permit["Permit Description"].split("<br>").join("");
+                    permit["Permit Description"] = permit["Permit Description"].split("<br>").join("").replace("Created by Import of Legacy Data on May 29, 2019 ", "").replace(" (App Number)", "");
                     ["Permit Description", "Permit Title", "Project Address", "Status", "Status Date", "Template name", "Permit Number"].forEach(function (attribute) {
                         var cell = row.insertCell();
                         cell.innerHTML += permit[attribute];
