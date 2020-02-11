@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "tsc -w",
-    "lint": "tslint './app/*.ts'"
+    "lint": "tslint --fix './app/*.ts'"
   },
   "keywords": [
     "esri",

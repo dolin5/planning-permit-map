@@ -41,11 +41,11 @@ define(["require", "exports", "esri/core/promiseUtils"], function (require, expo
         var _this = this;
         return promiseUtils.create(function (res, rej) {
             var locationsRequest = new XMLHttpRequest();
-            locationsRequest.responseType = "json";
             locationsRequest.open("GET", "https://planning-permit-db.herokuapp.com/get-locations");
+            locationsRequest.setRequestHeader("Content-Type", "application/json");
             locationsRequest.onload = function () {
-                if (locationsRequest.readyState == 4 && locationsRequest.status == 200) {
-                    res(locationsRequest.response);
+                if (locationsRequest.readyState === 4 && locationsRequest.status === 200) {
+                    res(JSON.parse(locationsRequest.response));
                 }
                 else {
                     rej({
@@ -61,11 +61,11 @@ define(["require", "exports", "esri/core/promiseUtils"], function (require, expo
         var _this = this;
         return promiseUtils.create(function (res, rej) {
             var permitsRequest = new XMLHttpRequest();
-            permitsRequest.responseType = "json";
             permitsRequest.open("GET", "https://planning-permit-db.herokuapp.com/get-permits");
+            permitsRequest.setRequestHeader("Content-Type", "application/json");
             permitsRequest.onload = function () {
-                if (permitsRequest.readyState == 4 && permitsRequest.status == 200) {
-                    res(permitsRequest.response);
+                if (permitsRequest.readyState === 4 && permitsRequest.status === 200) {
+                    res(JSON.parse(permitsRequest.response));
                 }
                 else {
                     rej({
